@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+:root{
+
+/* --THE FONTS STYLES -- */
+
+ --general-font: "Inter", sans-serif;
+ --second-font-option:"Nunito Sans", sans-serif;
+ --third-font-option: "DM Sans", sans-serif;
+
+/*-- FONT COLORS --*/
+
+  --color-one:#2255d7;
+ --color-two:#151b25; 
+ --color-three:#bed2f4;
+ --color-four:#809fde;
+ --color-five: #F3F4F6;
+ --color-six:#9CA3AF;
+ --color-seven:#6B7280;
+ --color-texts:#111827;
+ --dashboard-text: #1F2937;
+ --sub-text: #374151;
+ 
+ 
+
+ /* -Card colors and Icons- */
+
+ --color-a: #4B5563;
+ --color-b:#16A34A;
+ --color-c:#E5E7EB;
+ --color-d:#DBEAFE;
+ --color-e:#DCFCE7;
+ --color-f:#E0E7FF;
+
+}
+
+body, h1, h2, ul, p {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Funnel Display', sans-serif;
+    height: 100vh;
+    width: 100%;
+    background-color: var(--color-five);
+}
+
+@layer utilities{
+
+/* REUSABLE STYLE COMPONENTS--*/
+
+.common-font{
+  font-family: var(--third-font-option);
+  margin: 1em 1em;
+  font-weight: bold;
+  font-size: 1.3em;
+  color: #2255d7;
+}
+.paragraph-font{
+  font-family: var(--third-font-option);
+}
+
+/* CTA Buttons*/
+.cta-button{
+  background-color: #2255d7;
+  color: white;
+  font-family: var(--third-font-option);
+  font-size: 1.32em;
+  border-radius: 5px;
+  font-weight: 400;
+  padding: 0.2em 1.2em;
+  
+}
+
+/* Logo STYLING for navbar and Footer -- */
+}
