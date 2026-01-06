@@ -1,6 +1,6 @@
 //import React from 'react'
 import SidebarMenu from '../Home/SidebarMenu'
-import Feed from './Feed/Feed'
+import Feed from './Feed/FeedLayout'
 import TrendsMenu from '../Home/TrendsMenu'
 
 const LandingPage = () => {
