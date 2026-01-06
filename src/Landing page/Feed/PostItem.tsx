@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Heart, MessageCircle, Repeat2, BarChart3 } from 'lucide-react'
 
-const PostItem = ({ index }) => {
+const PostItem = ({ index }: {index:number}) => {
   const [isLiked, setIsLiked] = useState(false)
   const [likes, setLikes] = useState(34)
   const [isRetweeted, setIsRetweeted] = useState(false)
