@@ -2,11 +2,20 @@
 import { Home, Users, Flame, BookOpen, User, FileText, PenTool, Sparkles, BookMarked, Plus } from 'lucide-react'
 import { Link, useLocation } from 'react-router-dom'
 
-const SidebarMenu = () => {
+interface SidebarMenuProps {
+  onNavigate?: () => void
+}
+
+const SidebarMenu = ({ onNavigate }: SidebarMenuProps) => {
   const location = useLocation();
   
   // Helper function to check if a route is active
   const isActive = (path: string) => location.pathname === path;
+
+  // Handle link click - close sidebar on mobile
+  const handleLinkClick = () => {
+    if (onNavigate) onNavigate()
+  }
   
   return (
     <div className='flex flex-col gap-6'>
@@ -17,6 +26,7 @@ const SidebarMenu = () => {
           <li>
             <Link 
               to="/home"
+              onClick={handleLinkClick}
               className={`flex items-center gap-4 px-4 py-3 rounded-full cursor-pointer font-medium text-lg ${
                 isActive('/home') ? 'bg-blue-50 text-blue-500' : 'hover:bg-gray-100'
               }`}
@@ -28,6 +38,7 @@ const SidebarMenu = () => {
           <li>
             <Link 
               to="/community"
+              onClick={handleLinkClick}
               className={`flex items-center gap-4 px-4 py-3 rounded-full cursor-pointer font-medium text-lg ${
                 isActive('/community') ? 'bg-blue-50 text-blue-500' : 'hover:bg-gray-100'
               }`}
@@ -39,6 +50,7 @@ const SidebarMenu = () => {
           <li>
             <Link 
               to="/hot-topics"
+              onClick={handleLinkClick}
               className={`flex items-center gap-4 px-4 py-3 rounded-full cursor-pointer font-medium text-lg ${
                 isActive('/hot-topics') ? 'bg-blue-50 text-blue-500' : 'hover:bg-gray-100'
               }`}
@@ -50,6 +62,7 @@ const SidebarMenu = () => {
           <li>
             <Link 
               to="/my-library"
+              onClick={handleLinkClick}
               className={`flex items-center gap-4 px-4 py-3 rounded-full cursor-pointer font-medium text-lg ${
                 isActive('/my-library') ? 'bg-blue-50 text-blue-500' : 'hover:bg-gray-100'
               }`}
@@ -61,6 +74,7 @@ const SidebarMenu = () => {
           <li>
             <Link 
               to="/profile"
+              onClick={handleLinkClick}
               className={`flex items-center gap-4 px-4 py-3 rounded-full cursor-pointer font-medium text-lg ${
                 isActive('/profile') ? 'bg-blue-50 text-blue-500' : 'hover:bg-gray-100'
               }`}
@@ -72,6 +86,7 @@ const SidebarMenu = () => {
           <li>
             <Link 
               to="/short-stories"
+              onClick={handleLinkClick}
               className={`flex items-center gap-4 px-4 py-3 rounded-full cursor-pointer font-medium text-lg ${
                 isActive('/short-stories') ? 'bg-blue-50 text-blue-500' : 'hover:bg-gray-100'
               }`}
@@ -83,6 +98,7 @@ const SidebarMenu = () => {
           <li>
             <Link 
               to="/authors"
+              onClick={handleLinkClick}
               className={`flex items-center gap-4 px-4 py-3 rounded-full cursor-pointer font-medium text-lg ${
                 isActive('/authors') ? 'bg-blue-50 text-blue-500' : 'hover:bg-gray-100'
               }`}
@@ -94,6 +110,7 @@ const SidebarMenu = () => {
           <li>
             <Link 
               to="/new-releases"
+              onClick={handleLinkClick}
               className={`flex items-center gap-4 px-4 py-3 rounded-full cursor-pointer font-medium text-lg ${
                 isActive('/new-releases') ? 'bg-blue-50 text-blue-500' : 'hover:bg-gray-100'
               }`}
@@ -105,6 +122,7 @@ const SidebarMenu = () => {
           <li>
             <Link 
               to="/reading"
+              onClick={handleLinkClick}
               className={`flex items-center gap-4 px-4 py-3 rounded-full cursor-pointer font-medium text-lg ${
                 isActive('/reading') ? 'bg-blue-50 text-blue-500' : 'hover:bg-gray-100'
               }`}
