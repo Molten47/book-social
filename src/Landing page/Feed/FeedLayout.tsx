@@ -15,15 +15,15 @@ const BookClub = lazy(() => import('../Navbar/NavbarOptions/BookClub'));
 const FeedContent = () => (
   <>
     {/* Post Composer */}
-    <div className="border-b border-gray-200 px-4 py-4">
+    <div className="border-b border-gray-200 px-3 md:px-4 py-3 md:py-4">
       <TextareaAutosize 
         placeholder="What book are you reading?" 
-        className="w-full resize-none outline-none text-lg"
-        minRows={3}
-        maxRows={10}
+        className="w-full resize-none outline-none text-base md:text-lg"
+        minRows={2}
+        maxRows={8}
       />
       <div className="flex justify-end mt-2">
-        <button className="cta-button px-6 py-2 rounded-full font-bold">
+        <button className="cta-button px-4 md:px-6 py-2 rounded-full font-bold text-sm md:text-base">
           Post
         </button>
       </div>
@@ -40,22 +40,31 @@ const FeedContent = () => (
 
 const Feed = () => {
   return (
-    <div className="min-h-screen">
-      {/* Feed Header */}
-      <div className="sticky top-0 bg-white border-b border-gray-200 backdrop-blur-sm bg-opacity-95 z-10">
+    <div className="flex flex-col h-screen max-h-screen overflow-hidden">
+      {/* Feed Header - Fixed */}
+      <div className="shrink-0 bg-white border-b border-gray-200 backdrop-blur-sm bg-opacity-95 z-10">
         <Navbar />
       </div>
 
-      {/* Nested Routes with Suspense */}
-      <Suspense fallback={<div className="p-4 text-center">Loading...</div>}>
-        <Routes>
-          <Route path="/" element={<FeedContent />} />
-          <Route path="/trending" element={<Trending />} />
-          <Route path="/community" element={<Community />} />
-          <Route path="/following" element={<Following />} />
-          <Route path="/book-clubs" element={<BookClub />} />
-        </Routes>
-      </Suspense>
+      {/* Scrollable Content Area */}
+      <div className="flex-1 overflow-y-auto">
+        <Suspense fallback={
+          <div className="flex items-center justify-center p-8">
+            <div className="text-center">
+              <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-500 mx-auto mb-3"></div>
+              <p className="text-gray-600 text-sm">Loading...</p>
+            </div>
+          </div>
+        }>
+          <Routes>
+            <Route path="/" element={<FeedContent />} />
+            <Route path="/trending" element={<Trending />} />
+            <Route path="/community" element={<Community />} />
+            <Route path="/following" element={<Following />} />
+            <Route path="/book-clubs" element={<BookClub />} />
+          </Routes>
+        </Suspense>
+      </div>
     </div>
   );
 };
